@@ -1,4 +1,4 @@
-const { Transform, Duplex } = require('stream');
+const { Transform } = require('stream');
 const path = require('path');
 const { Worker } = require('worker_threads');
 
