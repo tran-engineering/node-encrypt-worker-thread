@@ -1,11 +1,8 @@
-const path = require('path');
 const crypto = require('crypto');
 const fs = require('fs');
 const pipeline = require('util').promisify(require('stream').pipeline);
 
-
 const { EncryptTransform } = require('./encrypt-transform');
-
 
 // Generate random crypto key and iv
 const algorithm = 'aes-256-cbc-hmac-sha256';
@@ -25,7 +22,6 @@ async function main() {
   await pipeline([input, encryptTransform, output]);
   console.log('encryption done');
 
-  
   // test whether input and decrypted output are the same
   const decipher = crypto.createDecipheriv(cryptoConfig.algorithm, cryptoConfig.key, cryptoConfig.iv);
   const inputData = fs.readFileSync('input.txt');
